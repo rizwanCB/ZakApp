@@ -3,4 +3,4 @@
 | this lessens the architectural imports of ../../
 */
 
-export {default} from './scenes/Splash'
+export {default} from './navigations';

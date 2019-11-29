@@ -1,7 +1,7 @@
 import React from 'react';
-import Splash from './src';
+import MainNavStack from './src';
 const App = () => {
-  return <Splash />;
+  return <MainNavStack />;
 };
 
 export default App;
