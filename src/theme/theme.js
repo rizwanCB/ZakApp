@@ -7,7 +7,7 @@ const theme = {
     primary: '#8E24AA',
     lightFontColor: 'white',
     purpleGradeOne: '#E040FB',
-    purpleGradeTwo: '#E040FB',
+    purpleGradeTwo: '#AB47BC',
   },
   Header: {
     barStyle: 'light-content',

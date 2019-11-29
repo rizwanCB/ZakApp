@@ -10,18 +10,19 @@ import TouchableScale from 'react-native-touchable-scale'; // https://github.com
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from 'react-redux';
 
-import {getUsers} from '../../redux';
+import {getAlbums} from '../../redux';
 import theme from '../../theme';
-const Home = props => {
+const Albums = props => {
   useEffect(() => {
-    props.getUsers();
+    const selectedUserId = props.navigation.getParam('params');
+    props.getAlbums(selectedUserId);
   }, []);
   return (
     <>
       <Header
         placement={'left'}
         centerComponent={{
-          text: 'Users',
+          text: 'Albums',
           style: {color: '#fff', fontSize: 22},
         }}
       />
@@ -30,32 +31,29 @@ const Home = props => {
           <ActivityIndicator size={'large'} />
         ) : (
           <FlatList
-            data={props.users}
+            data={props.albums}
             style={styles.flatListContainer}
             keyExtractor={item => item.id}
             renderItem={({item}) => (
               <ListItem
-                title={item.name}
+                title={item.title}
                 light
-                subtitle={`${item.address.city} ${item.address.zipcode}`}
                 chevron
+                leftIcon={{name: 'ios-albums', type: 'ionicon'}}
                 Component={TouchableScale}
                 friction={90} //
                 tension={100} // These props are passed to the parent component (here TouchableScale)
                 activeScale={0.95} //
                 linearGradientProps={{
                   colors: [
-                    theme.colors.purpleGradeOne,
-                    theme.colors.purpleGradeOne,
+                    theme.colors.purpleGradeTwo,
+                    theme.colors.purpleGradeTwo,
                   ],
                 }}
                 ViewComponent={LinearGradient}
                 titleStyle={styles.title}
                 subtitleStyle={styles.subtitle}
                 containerStyle={styles.itemContainer}
-                onPress={() => {
-                  props.navigation.navigate('Albums', {params: item.id});
-                }}
               />
             )}
           />
@@ -83,12 +81,12 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  const {users, loading} = state.Data;
-  return {users, loading};
+  const {albums, loading} = state.Data;
+  return {albums, loading};
 };
 export default connect(
   mapStateToProps,
   {
-    getUsers,
+    getAlbums,
   },
-)(Home);
+)(Albums);

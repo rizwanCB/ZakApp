@@ -1,5 +1,7 @@
-import {FETCH_IN_PROGRESS, USERS} from '../types.js';
+import {FETCH_IN_PROGRESS, USERS, ALBUMS} from '../types.js';
 import getAllUsers from '../../services';
+import getAllAlbums from '../../services';
+
 import {Alert} from 'react-native';
 
 export const loadingControl = text => {
@@ -14,6 +16,12 @@ export const setFetchedUsers = users => {
     payLoad: users,
   };
 };
+export const setFetchedAlbums = albums => {
+  return {
+    type: ALBUMS,
+    payLoad: albums,
+  };
+};
 
 export const getUsers = () => {
   return dispatch => {
@@ -22,6 +30,22 @@ export const getUsers = () => {
     getAllUsers(endPoint, '', 'get')
       .then(result => {
         dispatch(setFetchedUsers(result.data));
+        dispatch(loadingControl('false'));
+      })
+      .catch(err => {
+        Alert.alert(err.message);
+        dispatch(loadingControl('false'));
+      });
+    //   do a long time consuming call like API CALLS here
+  };
+};
+export const getAlbums = id => {
+  return dispatch => {
+    dispatch(loadingControl('true'));
+    const endPoint = `albums?userId=${id}`;
+    getAllAlbums(endPoint, '', 'get')
+      .then(result => {
+        dispatch(setFetchedAlbums(result.data));
         dispatch(loadingControl('false'));
       })
       .catch(err => {

@@ -1,1 +1,1 @@
-export {getUsers, loadingControl} from './DataActions';
+export {getUsers, getAlbums, loadingControl} from './DataActions';
