@@ -1,4 +1,4 @@
-import {FETCH_IN_PROGRESS, USERS, ALBUMS} from '../types.js';
+import {FETCH_IN_PROGRESS, USERS, ALBUMS, PHOTOS} from '../types.js';
 import getAllUsers from '../../services';
 import getAllAlbums from '../../services';
 
@@ -20,6 +20,13 @@ export const setFetchedAlbums = albums => {
   return {
     type: ALBUMS,
     payLoad: albums,
+  };
+};
+
+export const setFetchedAlbumPhotos = photos => {
+  return {
+    type: PHOTOS,
+    payLoad: photos,
   };
 };
 
@@ -46,6 +53,22 @@ export const getAlbums = id => {
     getAllAlbums(endPoint, '', 'get')
       .then(result => {
         dispatch(setFetchedAlbums(result.data));
+        dispatch(loadingControl('false'));
+      })
+      .catch(err => {
+        Alert.alert(err.message);
+        dispatch(loadingControl('false'));
+      });
+    //   do a long time consuming call like API CALLS here
+  };
+};
+export const getAlbumPhotos = id => {
+  return dispatch => {
+    dispatch(loadingControl('true'));
+    const endPoint = `albums/${id}/photos`;
+    getAllAlbums(endPoint, '', 'get')
+      .then(result => {
+        dispatch(setFetchedAlbumPhotos(result.data));
         dispatch(loadingControl('false'));
       })
       .catch(err => {

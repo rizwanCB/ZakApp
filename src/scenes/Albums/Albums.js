@@ -54,6 +54,9 @@ const Albums = props => {
                 titleStyle={styles.title}
                 subtitleStyle={styles.subtitle}
                 containerStyle={styles.itemContainer}
+                onPress={() => {
+                  props.navigation.navigate('Photos', {params: item.id});
+                }}
               />
             )}
           />

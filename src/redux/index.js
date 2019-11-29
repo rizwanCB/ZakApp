@@ -1,2 +1,2 @@
 export {default} from './reducers';
-export {getUsers, getAlbums, loadingControl} from './actions';
+export {getUsers, getAlbums, getAlbumPhotos, loadingControl} from './actions';

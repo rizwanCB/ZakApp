@@ -7,7 +7,7 @@ export const baseURL = 'https://jsonplaceholder.typicode.com/';
 const fetch = (endPoint, params, reqType) => {
   const occ = axios.create({});
   const url = `${baseURL}${endPoint}`;
-
+  console.warn(url);
   switch (reqType) {
     case 'get':
       return new Promise((resolve, reject) => {

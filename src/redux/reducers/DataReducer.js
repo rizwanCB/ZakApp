@@ -1,8 +1,9 @@
-import {FETCH_IN_PROGRESS, USERS, ALBUMS} from '../types.js';
+import {FETCH_IN_PROGRESS, USERS, ALBUMS, PHOTOS} from '../types.js';
 const INITIAL_STATE = {
   loading: false,
   users: [],
   albums: [],
+  photos: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -12,6 +13,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     case ALBUMS: {
       return {...state, albums: action.payLoad};
+    }
+    case PHOTOS: {
+      return {...state, photos: action.payLoad};
     }
     case FETCH_IN_PROGRESS: {
       const bool = action.payLoad === 'true' ? true : false;

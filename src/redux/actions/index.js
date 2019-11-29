@@ -1,1 +1,6 @@
-export {getUsers, getAlbums, loadingControl} from './DataActions';
+export {
+  getUsers,
+  getAlbums,
+  getAlbumPhotos,
+  loadingControl,
+} from './DataActions';
