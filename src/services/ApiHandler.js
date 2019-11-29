@@ -1,12 +1,12 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const baseURL = 'http://ecom.easycod.net/mobile/';
-// export const baseURL = 'http://192.168.10.15:3000/';
+//todo from process env instead of hardCode
+export const baseURL = 'https://jsonplaceholder.typicode.com/';
+
 const fetch = (endPoint, params, reqType) => {
   const occ = axios.create({});
   const url = `${baseURL}${endPoint}`;
-  console.warn(url);
 
   switch (reqType) {
     case 'get':

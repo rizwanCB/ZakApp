@@ -1,5 +1,5 @@
 import {FETCH_IN_PROGRESS, USERS} from '../types.js';
-import getAllOrders from '../../services';
+import getAllUsers from '../../services';
 import {Alert} from 'react-native';
 
 export const loadingControl = text => {
@@ -15,16 +15,13 @@ export const setFetchedUsers = users => {
   };
 };
 
-export const getOrders = () => {
+export const getUsers = () => {
   return dispatch => {
     dispatch(loadingControl('true'));
-
-    // const endPoint = 'sells?time=today&status=LATER&shipper=ALL&package=ALL';
-    const endPoint = 'sells?time=yesterday&status=ALL&shipper=ALL&package=ALL';
-    getAllOrders(endPoint, '', 'get')
+    const endPoint = 'users';
+    getAllUsers(endPoint, '', 'get')
       .then(result => {
-        console.warn(result.data.transaction);
-        dispatch(setFetchedUsers(result.data.transaction));
+        dispatch(setFetchedUsers(result.data));
         dispatch(loadingControl('false'));
       })
       .catch(err => {

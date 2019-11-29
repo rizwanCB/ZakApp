@@ -4,7 +4,14 @@
 */
 const theme = {
   colors: {
-    primary: 'purple',
+    primary: '#8E24AA',
+    lightFontColor: 'white',
+    purpleGradeOne: '#E040FB',
+    purpleGradeTwo: '#E040FB',
+  },
+  Header: {
+    barStyle: 'light-content',
+    statusBarProps: {barStyle: 'light-content', translucent: true},
   },
 };
 

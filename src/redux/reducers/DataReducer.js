@@ -1,7 +1,7 @@
 import {FETCH_IN_PROGRESS, USERS} from '../types.js';
 const INITIAL_STATE = {
   loading: false,
-  users: {},
+  users: [],
 };
 
 export default (state = INITIAL_STATE, action) => {

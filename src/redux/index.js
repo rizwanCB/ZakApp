@@ -1,2 +1,2 @@
 export {default} from './reducers';
-export {setFetchedUsers, loadingControl} from './actions';
+export {getUsers, loadingControl} from './actions';

@@ -1,1 +1,1 @@
-export {setFetchedUsers, loadingControl} from './DataActions';
+export {getUsers, loadingControl} from './DataActions';
